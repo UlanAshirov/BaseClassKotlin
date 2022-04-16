@@ -24,6 +24,7 @@ class MainAdapter(private val listener: SelectListener) :
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         holder.onBind(imgList[position])
+        holder.binding.imgItem.alpha = 1f
         holder.itemView.setOnLongClickListener {
             holder.binding.imgItem.alpha = 0.5f
             listener.select(imgList[position])
