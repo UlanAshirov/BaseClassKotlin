@@ -3,15 +3,14 @@ package com.joma.baseclasskotlin.ui.main
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.joma.baseclasskotlin.databinding.ItemImgBinding
 
 class MainAdapter(private val listener: SelectListener) :
     RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
-    private var imgList = arrayListOf<String>()
+    private var imgList = arrayListOf<Int>()
 
 
-    fun setImgList(imgList: ArrayList<String>) {
+    fun setImgList(imgList: ArrayList<Int>) {
         this.imgList = imgList
         notifyDataSetChanged()
     }
@@ -38,12 +37,12 @@ class MainAdapter(private val listener: SelectListener) :
 
     class MainViewHolder(val binding: ItemImgBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(s: String) {
-            Glide.with(binding.root).load(s).centerCrop().into(binding.imgItem)
+        fun onBind(img: Int) {
+            binding.imgItem.setImageResource(img)
         }
     }
 
     interface SelectListener {
-        fun select(element: String)
+        fun select(selectImg: Int)
     }
 }

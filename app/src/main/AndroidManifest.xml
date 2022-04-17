@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.joma.baseclasskotlin">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BaseClassKotlin">
-        <activity android:name=".ui.second.SecondActivity"></activity>
+        <activity android:name=".ui.second.SecondActivity" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true">

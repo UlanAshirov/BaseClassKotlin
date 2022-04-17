@@ -3,13 +3,12 @@ package com.joma.baseclasskotlin.ui.second
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.joma.baseclasskotlin.databinding.SelectedItemBinding
 
 class SecondAdapter : RecyclerView.Adapter<SecondAdapter.SecondViewHolder>() {
-    private var selectList = arrayListOf<String>()
+    private var selectList = arrayListOf<Int>()
 
-    fun setSelectList(selectList: ArrayList<String>) {
+    fun setSelectList(selectList: ArrayList<Int>) {
         this.selectList = selectList
         notifyDataSetChanged()
     }
@@ -32,8 +31,8 @@ class SecondAdapter : RecyclerView.Adapter<SecondAdapter.SecondViewHolder>() {
 
     class SecondViewHolder(private val binding: SelectedItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(s: String) {
-            Glide.with(binding.root).load(s).centerCrop().into(binding.imgSelectItem)
+        fun onBind(img: Int) {
+            binding.imgSelectItem.setImageResource(img)
         }
     }
 }

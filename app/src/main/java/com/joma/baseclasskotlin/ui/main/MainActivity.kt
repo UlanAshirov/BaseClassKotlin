@@ -10,8 +10,8 @@ import com.joma.baseclasskotlin.ext.showToast
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate),
     MainAdapter.SelectListener {
     private lateinit var adapter: MainAdapter
-    private var list: ArrayList<String> = arrayListOf()
-    private var selectedList: ArrayList<String> = arrayListOf()
+    private var list: ArrayList<Int> = arrayListOf()
+    private var selectedList: ArrayList<Int> = arrayListOf()
 
     override fun initListener() {
         binding.btnForward.setOnClickListener {
@@ -20,12 +20,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
             } else {
                 resetSelected()
-                val intent = Intent(this, SecondActivity::class.java)
-                intent.putStringArrayListExtra(getString(R.string.selectKey), selectedList)
-                startActivity(intent)
+                openActivity()
                 selectedList.clear()
             }
         }
+    }
+
+    private fun openActivity() {
+        val intent = Intent(this, SecondActivity::class.java)
+        intent.putIntegerArrayListExtra(getString(R.string.selectKey), selectedList)
+        startActivity(intent)
     }
 
     private fun resetSelected() {
@@ -42,19 +46,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     }
 
     private fun initList() {
-        list.add("https://i.imgur.com/DvpvklR.png")
-        list.add("https://cdn.urlencoder.org/assets/images/url-fb.png")
-        list.add("https://rickandmortyapi.com/api/character/avatar/361.jpeg")
-        list.add("https://rickandmortyapi.com/api/character/avatar/1.jpeg")
-        list.add("https://rickandmortyapi.com/api/character/avatar/10.jpeg")
-        list.add("https://cdn.pixabay.com/user/2019/12/22/16-48-03-254_250x250.jpg")
-        list.add("https://cdn.pixabay.com/user/2022/03/01/12-32-48-46_250x250.jpg")
-        list.add("https://cdn.pixabay.com/user/2020/01/20/08-28-52-707_250x250.jpg")
-        list.add("https://cdn.pixabay.com/user/2022/01/25/03-16-01-988_250x250.jpg")
-        list.add("https://cdn.pixabay.com/user/2016/04/25/20-19-38-614_250x250.jpg")
+        list.add(R.drawable.img_1)
+        list.add(R.drawable.img_1)
+        list.add(R.drawable.img_1)
+        list.add(R.drawable.img_2)
+        list.add(R.drawable.img_3)
+        list.add(R.drawable.img_1)
+        list.add(R.drawable.img_2)
+        list.add(R.drawable.img_3)
+        list.add(R.drawable.img_1)
+        list.add(R.drawable.img_2)
+        list.add(R.drawable.img_3)
+        list.add(R.drawable.img_1)
+        list.add(R.drawable.img_2)
+        list.add(R.drawable.img_3)
+        list.add(R.drawable.img_1)
     }
 
-    override fun select(element: String) {
-        selectedList.add(element)
+    override fun select(selectImg: Int) {
+        selectedList.add(selectImg)
     }
 }

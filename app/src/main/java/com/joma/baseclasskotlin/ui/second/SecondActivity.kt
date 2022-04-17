@@ -5,15 +5,18 @@ import com.joma.baseclasskotlin.base.BaseActivity
 import com.joma.baseclasskotlin.databinding.ActivitySecondBinding
 
 class SecondActivity : BaseActivity<ActivitySecondBinding>(ActivitySecondBinding::inflate) {
-    private var selectedList: ArrayList<String> = arrayListOf()
+    private var selectedList: ArrayList<Int> = arrayListOf()
     private lateinit var adapter: SecondAdapter
 
     override fun initView() {
-        val imgUrl =
-            (intent.getStringArrayListExtra(getString(R.string.selectKey)) as ArrayList<String>)
-        selectedList.addAll(imgUrl)
         adapter = SecondAdapter()
         binding.rvSelectedImg.adapter = adapter
+        getImage()
+    }
+
+    private fun getImage() {
+        selectedList =
+            (intent.getIntegerArrayListExtra(getString(R.string.selectKey)) as ArrayList<Int>)
         adapter.setSelectList(selectedList)
     }
 }
